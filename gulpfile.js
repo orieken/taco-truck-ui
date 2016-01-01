@@ -19,7 +19,8 @@ gulp.task('vet', function() {
     .pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('set-up', function() {
+gulp.task('set-up', function(done) {
+  clean('public/javascripts/config.js', done);
   gulp.src('config.json')
     .pipe($.ngConfig('tacoTruck', config.setUp))
     .pipe(gulp.dest('public/javascripts'));
